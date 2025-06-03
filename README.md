@@ -7,55 +7,80 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-## About Laravel
+## ✨ Sobre este proyecto
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Este proyecto fue creado con Laravel 7 como una prueba técnica.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Se utilizó Docker como entorno de desarrollo para evitar conflictos con las dependencias locales del equipo. Sin embargo, también puedes ejecutarlo directamente en tu equipo si cuentas con los requisitos necesarios 🙌
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## ✅ Requerimientos
+- Laravel 7
+- Composer
+- php ^7.2|^8.0
+- MySQL o SQLite (solo para pruebas)
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🚀 Cómo iniciar la aplicación
+Sigue los siguientes pasos para ejecutar la aplicación de forma local:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. Ubícate en la carpeta donde deseas clonar el repositorio.
 
-## Laravel Sponsors
+2. Clona el repositorio:
+```bash
+git clone <URL-del-repositorio>
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+3. Ingresa al directorio del proyecto:
+```bash
+cd nombre-del-proyecto
+```
 
-### Premium Partners
+4. Instala las dependencias del proyecto:
+```bash
+composer install 
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+5. Configura el archivo **.env**. Como esta aplicación envía correos electrónicos, es importante definir correctamente las variables relacionadas al correo.
 
-## Contributing
+6. Ejecuta las migraciones y seeders con el siguiente comando:
+```bash
+php artisan migrate --seed
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+7. 🚀 AInicia el servidor de desarrollo: 
 
-## Code of Conduct
+```bash
+php artisan serve 
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+La aplicación estará disponible en http://localhost:8000
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 🐋 Ejecutar la aplicación con Docker 
 
-## License
+Para ejecutar la aplicación con Docker, asegúrate de tener instalados Docker y Docker Compose en tu equipo.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Una vez instalados, ejecuta:
+```bash
+docker compose up -d --build
+```
+
+Este comando levantará dos contenedores: uno para la aplicación y otro para la base de datos. La configuración de usuario y contraseña de la base de datos se encuentra en el archivo **docker-compose.yml**, y debe reflejarse correctamente en el archivo **.env**.
+
+La aplicación estará disponible en el puerto **8000** de tu máquina.
+
+### ⚒️ Ejecutar comandos dentro del contenedor
+
+ara ejecutar comandos como migraciones u otros comandos de Artisan desde Docker:
+
+1. Obtén el ID del contenedor:
+```bash
+docker ps
+```
+
+2. Accede al contenedor:
+```bash
+docker exec -it ID-CONTENEDOR /bin/bash
+```
+
+3. Una vez dentro, puedes usar Artisan normalmente.
